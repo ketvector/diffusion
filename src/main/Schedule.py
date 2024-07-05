@@ -17,6 +17,7 @@ class LinearScheduleHolder():
     self.one_minus_alpha_bars = 1 - self.alpha_bars
     self.alpha_bar_roots = torch.sqrt(self.alpha_bars)
     self.one_minus_alpha_bar_roots = torch.sqrt(self.one_minus_alpha_bars)
+    self.one_upon_alpha_bar_roots = 1.0 / self.alpha_bar_roots
     
   def add_dims(self, x):
     return x.unsqueeze(-1).unsqueeze(-1)
@@ -38,6 +39,9 @@ class LinearScheduleHolder():
 
   def alpha_bar_root(self,t):
     return self.add_dims(self.alpha_bar_roots[t])
+  
+  def one_upon_alpha_bar_root(self,t):
+    return self.add_dims(self.one_upon_alpha_bar_roots[t])
   
 def get_noisy_image_sample(x_0, t):
   noise = torch.randn_like(x_0)

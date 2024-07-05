@@ -4,6 +4,7 @@ from Model import get_loss, UNet
 from Schedule import get_noisy_image_sample
 from Data import get_train_data_loader, reverse_transform
 from time import time
+from datetime import datetime
 
 def generate_simple(model):
   final_sample = torch.randn(size=(1,1,28,28))
@@ -13,7 +14,7 @@ def generate_simple(model):
 
 def train(model, optimizer, train_dataloader):
   timesteps = 300
-  epochs = 5
+  epochs = 10
   current_time_pair = None
   for epoch in range(epochs):
     for step, (batch, _) in enumerate(train_dataloader):
@@ -39,9 +40,12 @@ def main():
     model = UNet(channels = 1, dim = 28, dim_mults=[1,2])
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
     train_data_loader = get_train_data_loader()
-    model.eval()
     train(model, optimizer, train_data_loader)
+    current_time = datetime.now()
+    formatted_time = current_time.strftime('%Y-%m-%d-%H:%M:%S')
+    torch.save(model.state_dict(), f"./{formatted_time}")
+    model.eval()
     image_raw, predicted_noise = generate_simple(model)
     reverse_transform(image_raw[0].detach())
 
-main()
+#main()
