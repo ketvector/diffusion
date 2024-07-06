@@ -2,6 +2,7 @@ from torchvision import datasets
 from torchvision.transforms import Compose, ToTensor, Lambda, ToPILImage
 from torch.utils.data import DataLoader
 import numpy as np
+import constants
 
 transform = Compose([ToTensor(), Lambda(lambda x: (2 * x) - 1)])
 
@@ -14,11 +15,14 @@ reverse_transform = Compose([
 ])
 
 def get_train_data_loader():
-    training_data = datasets.MNIST(
-        root="data",
-        train=True,
-        download=True,
-        transform=transform
-    )
-    train_dataloader = DataLoader(training_data, batch_size=64, shuffle=True)
-    return train_dataloader
+    if constants.DATASET == "mnist":
+        training_data = datasets.MNIST(
+            root="data",
+            train=True,
+            download=True,
+            transform=transform
+        )
+        train_dataloader = DataLoader(training_data, batch_size=64, shuffle=True)
+        return train_dataloader
+    else:
+        return NotImplementedError()

@@ -9,7 +9,7 @@ def get_noisy_image_sample(x_0, t):
   return (x_0 * s.alpha_bar_root(t) + noise * s.one_minus_alpha_bar_root(t), noise)
 
 def generate_simple(model):
-  final_sample = torch.randn(size=(1,1,28,28))
+  final_sample = torch.randn(size=(1,constants.IMAGE_CHANNELS,constants.IMAGE_DIM,constants.IMAGE_DIM))
   predicted_noise = model(final_sample, torch.tensor([[constants.TIMESTEPS - 1]]))
   image_raw = final_sample - predicted_noise
   return image_raw, predicted_noise
@@ -17,7 +17,7 @@ def generate_simple(model):
 timesteps = constants.TIMESTEPS
 def algo_two_simple(model):
   s = LinearScheduleHolder()
-  x_t = torch.randn((1,1,28,28))
+  x_t = torch.randn((1,constants.IMAGE_CHANNELS,constants.IMAGE_DIM,constants.IMAGE_DIM))
   xs = []
   for t in reversed(range(timesteps)):
     xs.append(x_t)

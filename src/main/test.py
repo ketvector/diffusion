@@ -13,7 +13,7 @@ def get_sample_steps():
     return sample_steps
 
 def infer(saved_weights_path, save_as_name):
-    model = UNet(channels = 1, dim = 28, dim_mults=[1,2])
+    model = UNet(channels = constants.IMAGE_CHANNELS, dim = constants.IMAGE_DIM, dim_mults=[1,2])
     model.load_state_dict(torch.load(saved_weights_path))
     model.eval()
     

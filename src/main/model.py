@@ -4,10 +4,11 @@ from torch import nn
 from resnet import ResNetBlock
 from network_pieces import DownSample, UpSample
 from position_embedding import SinusoidalPositionEmbedding
+import constants
 
 class UNet(nn.Module):
   
-  def __init__(self, channels = 1, dim = 28, dim_mults=[1,2]):
+  def __init__(self, channels = constants.IMAGE_CHANNELS, dim = constants.IMAGE_DIM, dim_mults=[1,2]):
     super().__init__()
     self.dim = dim
     self.channels = channels

@@ -33,7 +33,7 @@ def train(model, optimizer, train_dataloader):
       optimizer.step()
 
 if __name__ == "__main__":
-    model = UNet(channels = 1, dim = 28, dim_mults=[1,2])
+    model = UNet(channels = constants.IMAGE_CHANNELS, dim = constants.IMAGE_DIM, dim_mults=[1,2])
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
     train_data_loader = get_train_data_loader()
     train(model, optimizer, train_data_loader)
