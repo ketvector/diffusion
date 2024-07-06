@@ -6,11 +6,11 @@ from datetime import datetime
 from model import get_loss, UNet
 from sampling import get_noisy_image_sample
 from data_helpers import get_train_data_loader
-
+import constants
 
 def train(model, optimizer, train_dataloader):
-  timesteps = 300
-  epochs = 10
+  timesteps = constants.TIMESTEPS
+  epochs = constants.EPOCHS
   current_time_pair = None
   for epoch in range(epochs):
     for step, (batch, _) in enumerate(train_dataloader):

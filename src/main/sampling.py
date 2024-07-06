@@ -1,6 +1,7 @@
 import torch
 
 from schedule import LinearScheduleHolder
+import constants
 
 def get_noisy_image_sample(x_0, t):
   noise = torch.randn_like(x_0)
@@ -9,14 +10,14 @@ def get_noisy_image_sample(x_0, t):
 
 def generate_simple(model):
   final_sample = torch.randn(size=(1,1,28,28))
-  predicted_noise = model(final_sample, torch.tensor([[299]]))
+  predicted_noise = model(final_sample, torch.tensor([[constants.TIMESTEPS - 1]]))
   image_raw = final_sample - predicted_noise
   return image_raw, predicted_noise
 
-timesteps = 300
+timesteps = constants.TIMESTEPS
 def algo_two_simple(model):
   s = LinearScheduleHolder()
-  x_t = torch.randn((1,28,28))
+  x_t = torch.randn((1,1,28,28))
   xs = []
   for t in reversed(range(timesteps)):
     xs.append(x_t)

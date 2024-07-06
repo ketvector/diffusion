@@ -1,4 +1,5 @@
 import torch
+import constants
 
 def linear_beta_schedule(timesteps):
   start = 0.0001
@@ -9,7 +10,7 @@ def linear_beta_schedule(timesteps):
 class LinearScheduleHolder():
   
   def __init__(self):
-    self.schedule = linear_beta_schedule(300)
+    self.schedule = linear_beta_schedule(constants.TIMESTEPS)
     self.timesteps = self.schedule.size(0)
     self.betas = self.schedule
     self.alphas = 1.0 - self.betas
