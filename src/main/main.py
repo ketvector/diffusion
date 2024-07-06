@@ -1,16 +1,10 @@
 
 import torch
-from Model import get_loss, UNet
-from Schedule import get_noisy_image_sample
-from Data import get_train_data_loader, reverse_transform
+from model import get_loss, UNet
+from sampling import get_noisy_image_sample
+from data_helpers import get_train_data_loader, reverse_transform
 from time import time
 from datetime import datetime
-
-def generate_simple(model):
-  final_sample = torch.randn(size=(1,1,28,28))
-  predicted_noise = model(final_sample, torch.tensor([[299]]))
-  image_raw = final_sample - predicted_noise
-  return image_raw, predicted_noise
 
 def train(model, optimizer, train_dataloader):
   timesteps = 300
@@ -44,8 +38,5 @@ def main():
     current_time = datetime.now()
     formatted_time = current_time.strftime('%Y-%m-%d-%H:%M:%S')
     torch.save(model.state_dict(), f"./{formatted_time}")
-    model.eval()
-    image_raw, predicted_noise = generate_simple(model)
-    reverse_transform(image_raw[0].detach())
 
 #main()

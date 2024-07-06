@@ -1,5 +1,5 @@
 import torch
-from SinusoidalPositionEmbedding import SinusoidalPositionEmbedding 
+from position_embedding import SinusoidalPositionEmbedding 
 import matplotlib.pyplot as plt 
 
 t = torch.arange(50).view(50,1)

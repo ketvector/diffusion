@@ -1,8 +1,7 @@
 import torch
-from Model import UNet
-from Main import generate_simple
-from Data import reverse_transform
-from Algo2 import algo_two_simple
+from model import UNet
+from data_helpers import reverse_transform
+from sampling import algo_two_simple
 
 model = UNet(channels = 1, dim = 28, dim_mults=[1,2])
 model.load_state_dict(torch.load("./2024-07-05-19:23:05.pth"))
