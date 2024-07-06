@@ -5,7 +5,16 @@ Some sample inference examples from my local machine.
 <img src="./results/result-7.jpg" width="196px"><img></br>
 
 
-(Simplified) diffusion model implementation based on the [DDPM](https://arxiv.org/abs/2006.11239) paper. The current implementation is a simplified version of the [hugging face annotated diffusion blog](https://huggingface.co/blog/annotated-diffusion). Also thanks to this [beautiful survey paper](https://arxiv.org/pdf/2406.08929) for increasing my intuitive understanding of the topic. 
+(Simplified) diffusion model implementation based on the [DDPM](https://arxiv.org/abs/2006.11239) paper. The current implementation is a simplified version of the [hugging face annotated diffusion blog](https://huggingface.co/blog/annotated-diffusion). Also thanks to this [beautiful survey paper](https://arxiv.org/pdf/2406.08929) for increasing my intuitive understanding of the topic.
+
+Some current simplifications:
+- No MLP for time embedding, and fixed an error with the time embedding implementation of the hf blog.
+- Time embedding passed initially only, not to every layer in UNet. This is probably worse for inference quality (todo: experiment) but gave me a simple model to play around with.
+- Simpler UNet (todo: experiment with deeper/more-res-connection ones)
+- Simplified inference using Algo-2 of the paper.
+- No attention layer.
+
+The cold diffusion paper does suggest that some of the technicalities of original DDPM might not be required, so some of the simplifications above may not cause inference quality problems. (todo: experiment)
 
 The model is trained on the [MNIST](https://www.kaggle.com/datasets/hojjatk/mnist-dataset) digits dataset. I will make a deeper model and try it with a more complex dataset later.
 
