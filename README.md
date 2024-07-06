@@ -1,3 +1,7 @@
+(Simplified) diffusion model implementation based on the [DDPM](https://arxiv.org/abs/2006.11239) paper.
+
+----------------------------------------------------------------------
+
 Some sample inference examples from my local machine.
 
 <img src="./results/result-0.jpg" width="196px"><img></br>
@@ -5,7 +9,7 @@ Some sample inference examples from my local machine.
 <img src="./results/result-7.jpg" width="196px"><img></br>
 
 
-(Simplified) diffusion model implementation based on the [DDPM](https://arxiv.org/abs/2006.11239) paper. The current implementation is a simplified version of the [hugging face annotated diffusion blog](https://huggingface.co/blog/annotated-diffusion). Also thanks to this [beautiful survey paper](https://arxiv.org/pdf/2406.08929) for increasing my intuitive understanding of the topic.
+The current implementation is a simplified version of the [hugging face annotated diffusion blog](https://huggingface.co/blog/annotated-diffusion). Also thanks to this [beautiful survey paper](https://arxiv.org/pdf/2406.08929) for increasing my intuitive understanding of the topic.
 
 The model is trained on the [MNIST](https://www.kaggle.com/datasets/hojjatk/mnist-dataset) digits dataset. I will make a deeper model and try it with a more complex dataset later.
 
