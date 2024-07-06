@@ -28,6 +28,7 @@ def infer(saved_weights_path, save_as_name):
 
     im = reverse_transform(result)
     im.save(save_as_name)
+    im.show()
     print("saved results ....")
 
 if __name__ == "__main__":
