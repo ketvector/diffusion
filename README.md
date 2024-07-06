@@ -15,3 +15,5 @@ to infer with the new weights.
 Some sample inference examples from my local machine.
 
 <img src="./results/result-0.jpg" width="196px"><img>
+<img src="./results/result-6.jpg" width="196px"><img>
+<img src="./results/result-7.jpg" width="196px"><img>
