@@ -1,6 +1,7 @@
 import torch
-import math
 from torch import nn
+import math
+
 
 class SinusoidalPositionEmbedding(nn.Module):
   def __init__(self, embedding_dim):

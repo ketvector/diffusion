@@ -1,8 +1,7 @@
 from torchvision import datasets
-from torchvision.transforms import Compose, ToTensor, Lambda
+from torchvision.transforms import Compose, ToTensor, Lambda, ToPILImage
 from torch.utils.data import DataLoader
 import numpy as np
-from torchvision.transforms import ToPILImage
 
 transform = Compose([ToTensor(), Lambda(lambda x: (2 * x) - 1)])
 

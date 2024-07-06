@@ -1,5 +1,6 @@
-from einops.layers.torch import Rearrange
 from torch import nn
+from einops.layers.torch import Rearrange
+
 
 class DownSample(nn.Module):
   def __init__(self, dim_in, dim_out):
