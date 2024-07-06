@@ -30,7 +30,7 @@ def train(model, optimizer, train_dataloader):
 
       optimizer.step()
 
-def main():
+if __name__ == "__main__":
     model = UNet(channels = 1, dim = 28, dim_mults=[1,2])
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
     train_data_loader = get_train_data_loader()
@@ -38,5 +38,3 @@ def main():
     current_time = datetime.now()
     formatted_time = current_time.strftime('%Y-%m-%d-%H:%M:%S')
     torch.save(model.state_dict(), f"./{formatted_time}")
-
-#main()
